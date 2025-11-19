@@ -1,30 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Safe Palmer Report</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Palmer Report</title>
 
-  <!-- Strip out all ads, scripts, and data exfiltration -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; frame-src https://www.palmerreport.com; script-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline';">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; frame-src https://www.palmerreport.com; script-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline';"
+    />
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background: #000;
-    }
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+      }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
-</head>
-<body>
-  <iframe sandbox="allow-same-origin allow-top-navigation-by-user-activation"
-          src="https://www.palmerreport.com"></iframe>
-</body>
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: white;
+      }
+
+      /* Overlay that hides the area at the bottom-right corner where the donate button appears */
+      .overlay-hide {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 200px;
+        height: 120px;
+        background: #fff;
+        pointer-events: none;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      sandbox="allow-same-origin allow-top-navigation-by-user-activation"
+      src="https://www.palmerreport.com"
+    ></iframe>
+
+    <!-- Visual cover for donation area -->
+    <div class="overlay-hide"></div>
+  </body>
 </html>
